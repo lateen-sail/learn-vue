@@ -1,35 +1,35 @@
 <template>
   <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm mx-auto">
-    <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+    <h2 class="text-2xl font-bold text-stone-800 mb-4 text-center">
       カウンター
     </h2>
 
     <!-- カウント表示 -->
     <div class="text-center mb-6">
-      <span class="text-6xl font-bold text-blue-600">{{ count }}</span>
+      <span class="text-6xl font-bold text-sky-600">{{ count }}</span>
     </div>
 
     <!-- ボタン群 -->
-    <div class="flex flex-col gap-3">
+    <div class="flex gap-2 pt-4">
       <button
         @click="increment"
-        class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+        class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-2xl"
       >
-        カウントアップ (+1)
+        +
       </button>
 
       <button
         @click="decrement"
-        class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+        class="bg-sky-700 hover:bg-sky-800 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-2xl"
       >
-        カウントダウン (-1)
+        -
       </button>
 
       <button
         @click="reset"
-        class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+        class="bg-stone-500 hover:bg-stone-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
       >
-        リセット (0)
+        reset
       </button>
     </div>
   </div>
