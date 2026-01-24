@@ -35,24 +35,18 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { ref } from "vue";
 
-// カウントの状態を管理
-const count = ref(0);
+export default {
+  setup() {
+    const count = ref(0);
 
-// カウントアップ
-const increment = () => {
-  count.value++;
-};
+    const increment = () => count.value++;
+    const decrement = () => count.value--;
+    const reset = () => (count.value = 0);
 
-// カウントダウン
-const decrement = () => {
-  count.value--;
-};
-
-// リセット
-const reset = () => {
-  count.value = 0;
+    return { count, increment, decrement, reset };
+  },
 };
 </script>
