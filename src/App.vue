@@ -4,7 +4,7 @@ import UserList from "./components/UserList.vue";
 </script>
 
 <template>
-  <div class="min-h-screen bg-stone-50 text-stone-900 py-8">
+  <div class="min-h-screen bg-stone-50 text-stone-900 pt-8">
     <!-- ヘッダー -->
     <header class="text-center mb-8">
       <h1 class="text-4xl font-bold">Vue Sandbox</h1>
