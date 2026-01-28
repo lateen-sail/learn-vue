@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Layout from "@/components/Layout.vue";
 import HomePage from "@/home/HomePage.vue";
-import CounterPage from "@/learning/counter/CounterPage.vue";
-import ApiPage from "@/learning/api/ApiPage.vue";
+import CounterPage from "@/learning/counter/Page.vue";
+import ApiPage from "@/learning/api/Page.vue";
 
 const routes = [
   {
