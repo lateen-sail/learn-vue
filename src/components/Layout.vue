@@ -116,7 +116,9 @@ const pageTitle = computed(() => {
       >
         {{ pageTitle }}
       </h1>
-      <router-view />
+      <div class="px-4 flex flex-col gap-8 items-center py-12">
+        <router-view />
+      </div>
     </main>
 
     <!-- フッター -->
