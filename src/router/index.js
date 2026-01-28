@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Layout from "@/components/Layout.vue";
+import NotFoundPage from "@/views/NotFound.vue";
 import HomePage from "@/views/Home.vue";
 import CounterPage from "@/views/learning/Counter.vue";
 import ApiPage from "@/views/learning/Api.vue";
@@ -40,6 +41,14 @@ const routes = [
         component: ComputedPage,
         meta: {
           title: "算出プロパティ",
+        },
+      },
+      {
+        path: "/:pathMatch(.*)*",
+        name: "NotFound",
+        component: NotFoundPage,
+        meta: {
+          title: "404",
         },
       },
     ],
