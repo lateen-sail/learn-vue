@@ -3,6 +3,7 @@ import Layout from "@/components/Layout.vue";
 import HomePage from "@/home/HomePage.vue";
 import CounterPage from "@/learning/counter/Page.vue";
 import ApiPage from "@/learning/api/Page.vue";
+import ComputedPage from "@/learning/computed/Page.vue";
 
 const routes = [
   {
@@ -13,16 +14,33 @@ const routes = [
         path: "/home",
         name: "Home",
         component: HomePage,
+        meta: {
+          title: "ホーム",
+        },
       },
       {
         path: "/counter",
         name: "Counter",
         component: CounterPage,
+        meta: {
+          title: "カウンター",
+        },
       },
       {
         path: "/api",
         name: "Api",
         component: ApiPage,
+        meta: {
+          title: "API",
+        },
+      },
+      {
+        path: "/computed",
+        name: "Computed",
+        component: ComputedPage,
+        meta: {
+          title: "算出プロパティ",
+        },
       },
     ],
   },

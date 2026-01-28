@@ -1,7 +1,5 @@
 <template>
   <div class="px-4 flex flex-col gap-8 items-center py-12">
-    <h1 class="text-4xl font-bold text-stone-800 mb-8">API</h1>
-
     <div class="bg-white rounded-xl shadow-lg p-6 max-w-4xl mx-auto w-full">
       <h2 class="text-2xl font-bold mb-4 text-center">ユーザー一覧</h2>
 

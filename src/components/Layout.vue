@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 
 // メニューの状態管理
 const isMenuOpen = ref(false);
@@ -13,6 +14,12 @@ const toggleMenu = () => {
 const closeMenu = () => {
   isMenuOpen.value = false;
 };
+
+const route = useRoute();
+
+const pageTitle = computed(() => {
+  return route.meta.title ?? "タイトルが入ります";
+});
 </script>
 
 <template>
@@ -88,6 +95,14 @@ const closeMenu = () => {
                   カウンター
                 </router-link>
               </li>
+              <li>
+                <router-link
+                  to="/computed"
+                  class="block py-2 px-3 hover:bg-stone-50 rounded-md transition-colors"
+                >
+                  算出プロパティ
+                </router-link>
+              </li>
             </ul>
           </div>
         </nav>
@@ -96,6 +111,11 @@ const closeMenu = () => {
 
     <!-- メインコンテンツ -->
     <main class="min-h-[calc(100vh-4rem-3rem)]">
+      <h1
+        class="text-3xl bg-stone-100 text-stone-500 font-bold py-6 text-center tracking-wider"
+      >
+        {{ pageTitle }}
+      </h1>
       <router-view />
     </main>
 
