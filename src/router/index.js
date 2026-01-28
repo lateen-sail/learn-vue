@@ -11,7 +11,7 @@ const routes = [
     component: Layout,
     children: [
       {
-        path: "/home",
+        path: "/",
         name: "Home",
         component: HomePage,
         meta: {

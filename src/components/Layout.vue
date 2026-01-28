@@ -69,7 +69,7 @@ const pageTitle = computed(() => {
           <ul class="pt-2 ml-4">
             <li>
               <router-link
-                to="/home"
+                to="/"
                 class="block py-2 px-3 hover:bg-stone-50 rounded-md transition-colors"
               >
                 ホーム
