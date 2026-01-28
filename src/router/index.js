@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Layout from "@/components/Layout.vue";
-import HomePage from "@/home/HomePage.vue";
-import CounterPage from "@/learning/counter/Page.vue";
-import ApiPage from "@/learning/api/Page.vue";
-import ComputedPage from "@/learning/computed/Page.vue";
+import HomePage from "@/views/Home.vue";
+import CounterPage from "@/views/learning/Counter.vue";
+import ApiPage from "@/views/learning/Api.vue";
+import ComputedPage from "@/views/learning/Computed.vue";
 
 const routes = [
   {
