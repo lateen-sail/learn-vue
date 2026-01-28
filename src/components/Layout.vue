@@ -95,7 +95,7 @@ const closeMenu = () => {
     </div>
 
     <!-- メインコンテンツ -->
-    <main class="min-h-[calc(100vh-4rem-4rem)]">
+    <main class="min-h-[calc(100vh-4rem-3rem)]">
       <router-view />
     </main>
 
