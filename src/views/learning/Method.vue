@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col gap-8">
-    <Button v-on:click="sayHello" class="w-20">Hello</Button>
+    <Button @click="sayHello" class="w-20">Hello</Button>
     <div class="flex items-center gap-2">
-      <Button v-on:click="add(5)" class="w-20">5</Button>
+      <Button @click="add(5)" class="w-20">5</Button>
       <p>{{ count }}</p>
     </div>
   </div>
