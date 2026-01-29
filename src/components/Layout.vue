@@ -119,6 +119,14 @@ const pageTitle = computed(() => {
                   キャッシュ
                 </router-link>
               </li>
+              <li>
+                <router-link
+                  to="/watch"
+                  class="block py-2 px-3 hover:bg-stone-50 rounded-md transition-colors"
+                >
+                  監視プロパティ
+                </router-link>
+              </li>
             </ul>
           </div>
         </nav>

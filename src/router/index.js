@@ -7,6 +7,7 @@ import ApiPage from "@/views/learning/Api.vue";
 import ComputedPage from "@/views/learning/Computed.vue";
 import MethodPage from "@/views/learning/Method.vue";
 import CachePage from "@/views/learning/Cache.vue";
+import WatchPage from "@/views/learning/Watch.vue";
 
 const routes = [
   {
@@ -59,6 +60,14 @@ const routes = [
         component: CachePage,
         meta: {
           title: "メソッド",
+        },
+      },
+      {
+        path: "/watch",
+        name: "Watch",
+        component: WatchPage,
+        meta: {
+          title: "監視プロパティ",
         },
       },
       {
