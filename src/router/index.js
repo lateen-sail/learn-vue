@@ -5,6 +5,7 @@ import HomePage from "@/views/Home.vue";
 import CounterPage from "@/views/learning/Counter.vue";
 import ApiPage from "@/views/learning/Api.vue";
 import ComputedPage from "@/views/learning/Computed.vue";
+import MethodPage from "@/views/learning/Method.vue";
 
 const routes = [
   {
@@ -41,6 +42,14 @@ const routes = [
         component: ComputedPage,
         meta: {
           title: "算出プロパティ",
+        },
+      },
+      {
+        path: "/method",
+        name: "Method",
+        component: MethodPage,
+        meta: {
+          title: "メソッド",
         },
       },
       {
