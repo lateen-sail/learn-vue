@@ -59,7 +59,7 @@ const routes = [
         name: "Cache",
         component: CachePage,
         meta: {
-          title: "メソッド",
+          title: "キャッシュ",
         },
       },
       {
