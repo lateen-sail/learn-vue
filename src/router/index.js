@@ -6,6 +6,7 @@ import CounterPage from "@/views/learning/Counter.vue";
 import ApiPage from "@/views/learning/Api.vue";
 import ComputedPage from "@/views/learning/Computed.vue";
 import MethodPage from "@/views/learning/Method.vue";
+import CachePage from "@/views/learning/Cache.vue";
 
 const routes = [
   {
@@ -48,6 +49,14 @@ const routes = [
         path: "/method",
         name: "Method",
         component: MethodPage,
+        meta: {
+          title: "メソッド",
+        },
+      },
+      {
+        path: "/cache",
+        name: "Cache",
+        component: CachePage,
         meta: {
           title: "メソッド",
         },
