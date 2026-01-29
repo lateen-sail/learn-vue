@@ -29,7 +29,7 @@ const pageTitle = computed(() => {
       <h1 class="text-3xl font-bold">Vue Sandbox</h1>
       <!-- メニューアイコン -->
       <button
-        @click="toggleMenu"
+        v-on:click="toggleMenu"
         class="p-2 hover:bg-stone-100 rounded-md transition-colors"
         aria-label="メニューを開く"
       >
@@ -54,7 +54,7 @@ const pageTitle = computed(() => {
     <div v-if="isMenuOpen" class="fixed inset-0 z-50">
       <!-- オーバーレイ背景 -->
       <div
-        @click="closeMenu"
+        v-on:click="closeMenu"
         class="absolute inset-0 bg-gray-900/40 transition-all"
       ></div>
 
@@ -62,7 +62,7 @@ const pageTitle = computed(() => {
       <div
         class="absolute top-0 right-0 h-full w-80 bg-white shadow-xl transform transition-transform ease-in-out duration-300"
         :class="isMenuOpen ? 'translate-x-0' : 'translate-x-full'"
-        @click="closeMenu"
+        v-on:click="closeMenu"
       >
         <!-- メニューコンテンツ -->
         <nav class="px-6 py-6 flex flex-col gap-4">

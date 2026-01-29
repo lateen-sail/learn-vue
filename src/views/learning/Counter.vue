@@ -8,21 +8,21 @@
     <!-- ボタン群 -->
     <div class="flex gap-2 pt-4">
       <button
-        @click="increment"
+        v-on:click="increment"
         class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-2xl"
       >
         +
       </button>
 
       <button
-        @click="decrement"
+        v-on:click="decrement"
         class="bg-sky-700 hover:bg-sky-800 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-2xl"
       >
         -
       </button>
 
       <button
-        @click="reset"
+        v-on:click="reset"
         class="bg-stone-500 hover:bg-stone-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
       >
         reset

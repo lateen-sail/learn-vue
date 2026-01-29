@@ -14,7 +14,7 @@
     <div v-else-if="error" class="text-center py-8">
       <p class="text-red-700 font-semibold">{{ error }}</p>
       <button
-        @click="fetchUsers"
+        v-on:click="fetchUsers"
         class="mt-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
       >
         再読み込み
@@ -28,7 +28,7 @@
           {{ users.length }}人のユーザーが見つかりました
         </p>
         <button
-          @click="fetchUsers"
+          v-on:click="fetchUsers"
           class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
         >
           更新
@@ -58,7 +58,7 @@
     <div v-else class="text-center py-8">
       <p class="text-stone-600">表示できるユーザーがいません</p>
       <button
-        @click="fetchUsers"
+        v-on:click="fetchUsers"
         class="mt-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
       >
         取得
