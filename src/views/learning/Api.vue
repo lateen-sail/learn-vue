@@ -39,6 +39,7 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 
 const state = ref({
   users: [],
@@ -58,10 +59,8 @@ const USERS_URL = "https://jsonplaceholder.typicode.com/users";
 
 // 通信処理
 const getUsers = async () => {
-  const response = await fetch(USERS_URL);
-
-  if (!response.ok) throw new Error(`HTTPエラー: ${response.status}`);
-  return response.json();
+  const { data } = await axios.get(USERS_URL);
+  return data;
 };
 
 // 状態管理
