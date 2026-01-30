@@ -49,21 +49,28 @@ const isEmpty = computed(
   () => !loading.value && !error.value && users.value.length === 0,
 );
 
+const USERS_URL = "https://jsonplaceholder.typicode.com/users";
+
+// 通信処理
+const getUsers = async () => {
+  const response = await fetch(USERS_URL);
+
+  if (!response.ok) throw new Error(`HTTPエラー: ${response.status}`);
+  return response.json();
+};
+
+// 状態管理
 const fetchUsers = async () => {
   loading.value = true;
   error.value = null;
 
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
-
-    if (!response.ok) {
-      throw new Error(`HTTPエラー: ${response.status}`);
-    }
-
-    const data = await response.json();
-    users.value = data;
+    users.value = await getUsers();
   } catch (err) {
-    error.value = `データの取得に失敗しました: ${err.message}`;
+    error.value =
+      err instanceof Error
+        ? `データの取得に失敗しました: ${err.message}`
+        : "データの取得に失敗しました";
     console.error("ユーザーデータの取得エラー:", err);
   } finally {
     loading.value = false;
