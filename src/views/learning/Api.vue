@@ -6,33 +6,26 @@
     <!-- エラー状態 -->
     <div v-else-if="state.error" class="flex flex-col gap-4 py-8">
       <p class="text-red-700 font-bold">{{ state.error }}</p>
-      <Button class="mt-4" variant="default" @click="fetchUsers">
+      <Button class="mt-4" variant="default" @click="fetchSchemaItem">
         再読み込み
       </Button>
     </div>
 
-    <!-- ユーザーデータ表示 -->
-    <div v-else-if="hasUsers">
-      <div class="grid gap-4 pt-8 md:grid-cols-2 lg:grid-cols-3">
-        <div
-          v-for="user in state.users"
-          :key="user.id"
-          class="border border-stone-200 rounded-lg p-4"
-        >
-          <h3 class="text-lg font-bold">
-            {{ user.name }}
-          </h3>
-          <p class="text-stone-600 mb-1">
-            <span class="font-medium">Email:</span> {{ user.email }}
-          </p>
-          <p class="text-stone-500 text-sm">
-            <span class="font-medium">ID:</span> {{ user.id }}
-          </p>
-        </div>
+    <!-- schema 表示 -->
+    <div v-else-if="hasLinks" class="grid grid-cols-3 gap-3">
+      <div
+        v-for="(link, index) in state.links"
+        :key="index"
+        class="border border-stone-200 rounded-lg p-4 flex flex-col gap-2"
+      >
+        <h3 class="text-lg font-bold">{{ link.title }}</h3>
+        <p class="text-stone-400 text-xs">
+          {{ link.description }}
+        </p>
       </div>
     </div>
 
-    <p v-else-if="isEmpty">表示できるユーザーがいません</p>
+    <p v-else-if="isEmpty">表示できるデータがありません</p>
   </div>
 </template>
 
@@ -42,46 +35,57 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 
 const state = ref({
-  users: [],
+  links: [],
   loading: false,
   error: null,
 });
 
-const hasUsers = computed(() => state.value.users.length > 0);
+const hasLinks = computed(() => state.value.links.length > 0);
 const isEmpty = computed(
   () =>
     !state.value.loading &&
     !state.value.error &&
-    state.value.users.length === 0,
+    state.value.links.length === 0,
 );
 
-const USERS_URL = "https://jsonplaceholder.typicode.com/users";
+const SCHEMA_URL = "https://qiita.com/api/v2/schema?locale=ja";
 
 // 通信処理
-const getUsers = async () => {
-  const { data } = await axios.get(USERS_URL);
-  return data;
+const getSchemaItem = async () => {
+  const { data } = await axios.get(SCHEMA_URL);
+
+  const links = data?.properties?.item?.links;
+
+  if (!Array.isArray(links)) {
+    throw new Error("links 定義が見つかりませんでした");
+  }
+
+  return links.map((link) => ({
+    title: link.title ?? "(title なし)",
+    description: link.description ?? "(description なし)",
+  }));
 };
 
 // 状態管理
-const fetchUsers = async () => {
+const fetchSchemaItem = async () => {
   state.value.loading = true;
   state.value.error = null;
 
   try {
-    state.value.users = await getUsers();
+    state.value.links = await getSchemaItem();
   } catch (err) {
+    state.value.links = [];
     state.value.error =
       err instanceof Error
         ? `データの取得に失敗しました: ${err.message}`
         : "データの取得に失敗しました";
-    console.error("ユーザーデータの取得エラー:", err);
+    console.error("schema 取得エラー:", err);
   } finally {
     state.value.loading = false;
   }
 };
 
 onMounted(() => {
-  fetchUsers();
+  fetchSchemaItem();
 });
 </script>
