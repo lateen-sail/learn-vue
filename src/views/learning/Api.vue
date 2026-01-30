@@ -12,12 +12,12 @@
     </div>
 
     <!-- ユーザーデータ表示 -->
-    <div v-else-if="users.length > 0">
+    <div v-else-if="hasUsers">
       <div class="grid gap-4 pt-8 md:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="user in users"
           :key="user.id"
-          class="border border-stone-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+          class="border border-stone-200 rounded-lg p-4"
         >
           <h3 class="text-lg font-bold">
             {{ user.name }}
@@ -32,17 +32,22 @@
       </div>
     </div>
 
-    <p v-else>表示できるユーザーがいません</p>
+    <p v-else-if="isEmpty">表示できるユーザーがいません</p>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { Button } from "@/components/ui/button";
 
 const users = ref([]);
 const loading = ref(false);
 const error = ref(null);
+
+const hasUsers = computed(() => users.value.length > 0);
+const isEmpty = computed(
+  () => !loading.value && !error.value && users.value.length === 0,
+);
 
 const fetchUsers = async () => {
   loading.value = true;
