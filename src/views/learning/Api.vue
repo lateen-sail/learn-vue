@@ -1,11 +1,11 @@
 <template>
   <div class="max-w-4xl mx-auto">
     <!-- ローディング状態 -->
-    <p v-if="loading">データを読み込み中...</p>
+    <p v-if="state.loading">データを読み込み中...</p>
 
     <!-- エラー状態 -->
-    <div v-else-if="error" class="flex flex-col gap-4 py-8">
-      <p class="text-red-700 font-bold">{{ error }}</p>
+    <div v-else-if="state.error" class="flex flex-col gap-4 py-8">
+      <p class="text-red-700 font-bold">{{ state.error }}</p>
       <Button class="mt-4" variant="default" @click="fetchUsers">
         再読み込み
       </Button>
@@ -15,7 +15,7 @@
     <div v-else-if="hasUsers">
       <div class="grid gap-4 pt-8 md:grid-cols-2 lg:grid-cols-3">
         <div
-          v-for="user in users"
+          v-for="user in state.users"
           :key="user.id"
           class="border border-stone-200 rounded-lg p-4"
         >
@@ -40,13 +40,18 @@
 import { ref, onMounted, computed } from "vue";
 import { Button } from "@/components/ui/button";
 
-const users = ref([]);
-const loading = ref(false);
-const error = ref(null);
+const state = ref({
+  users: [],
+  loading: false,
+  error: null,
+});
 
-const hasUsers = computed(() => users.value.length > 0);
+const hasUsers = computed(() => state.value.users.length > 0);
 const isEmpty = computed(
-  () => !loading.value && !error.value && users.value.length === 0,
+  () =>
+    !state.value.loading &&
+    !state.value.error &&
+    state.value.users.length === 0,
 );
 
 const USERS_URL = "https://jsonplaceholder.typicode.com/users";
@@ -61,19 +66,19 @@ const getUsers = async () => {
 
 // 状態管理
 const fetchUsers = async () => {
-  loading.value = true;
-  error.value = null;
+  state.value.loading = true;
+  state.value.error = null;
 
   try {
-    users.value = await getUsers();
+    state.value.users = await getUsers();
   } catch (err) {
-    error.value =
+    state.value.error =
       err instanceof Error
         ? `データの取得に失敗しました: ${err.message}`
         : "データの取得に失敗しました";
     console.error("ユーザーデータの取得エラー:", err);
   } finally {
-    loading.value = false;
+    state.value.loading = false;
   }
 };
 
