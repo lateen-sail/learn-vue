@@ -8,6 +8,7 @@ import ComputedPage from "@/views/learning/Computed.vue";
 import MethodPage from "@/views/learning/Method.vue";
 import CachePage from "@/views/learning/Cache.vue";
 import WatchPage from "@/views/learning/Watch.vue";
+import StylingPage from "@/views/learning/Styling.vue";
 
 const routes = [
   {
@@ -68,6 +69,14 @@ const routes = [
         component: WatchPage,
         meta: {
           title: "監視プロパティ",
+        },
+      },
+      {
+        path: "/styling",
+        name: "Styling",
+        component: StylingPage,
+        meta: {
+          title: "スタイリング",
         },
       },
       {

@@ -127,6 +127,14 @@ const pageTitle = computed(() => {
                   監視プロパティ
                 </router-link>
               </li>
+              <li>
+                <router-link
+                  to="/styling"
+                  class="block py-2 px-3 hover:bg-stone-50 rounded-md transition-colors"
+                >
+                  スタイリング
+                </router-link>
+              </li>
             </ul>
           </div>
         </nav>
